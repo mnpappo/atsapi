@@ -11,7 +11,28 @@
             <h2>Api Documentation: </h2>
             
             <div class="api-doc">
-                here
+                <div class="app_env">
+                    <h3>App Environment variablest</h3>
+                    <div style="background: #999; padding: 15px 20px; color: green;">
+                        <p>APP_ID=myAppId</p>
+                        <p> DATABASE_URI=$SCALINGO_MONGO_URL</p>
+                        <p>MASTER_KEY=myMasterKey</p>
+                        <p>MONGO_URL=$SCALINGO_MONGO_URL</p>
+                        <p>PARSE_MOUNT=/parse</p>
+                        <p>SCALINGO_MONGO_URL=mongodb://ats-api-2236:5-MpQgI6BDIbemDXXFs1@ats-api-2236.mongo.dbs.appsdeck.eu:30276/ats-api-2236</p>
+                    </div>
+
+                </div>
+                
+                <div class="sug">
+                    Rules to follow:
+                    
+                    <ul>
+                        <li>Please add <b>APP_ID</b> on header on every request</li>
+                        <li>Please send body/form parameters as json</li>
+                        <li>You will recieve json formated response on every request</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </body>
