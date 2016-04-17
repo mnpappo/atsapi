@@ -28,13 +28,13 @@ router.post('/', function(req, res) {
     console.log(params);
     var user = new Parse.User();
 
-    var epassword = crypto.createHash('md5').update(params.password).digest('hex');
+    // var epassword = crypto.createHash('md5').update(params.password).digest('hex');
 
     user.set("fullName", params.fullName);
     user.set("username", params.username);
     user.set("email", params.email);
-    user.set("password", epassword);
-    user.set("userType", "Admin");    
+    user.set("password", params.password);
+    user.set("userType", "Admin");
 
     user.signUp(null, {
         success: function(user){
@@ -77,9 +77,9 @@ router.post('/login', function(req, res, next) {
     var params = req.body;
     console.log(params);
 
-    var epassword = crypto.createHash('md5').update(params.password).digest('hex');
+    // var epassword = crypto.createHash('md5').update(params.password).digest('hex');
 
-    Parse.User.logIn(params.username, epassword, {
+    Parse.User.logIn(params.username, params.password, {
         success: function(user) {
             res.json(user);
         },
