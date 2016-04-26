@@ -50,6 +50,23 @@ router.post('/', function(req, res) {
 
 });
 
+// company count
+router.post('/companyCount', function(req, res) {
+    var params = req.body;
+    var Company = Parse.Object.extend("Company");
+    var query = new Parse.Query(Company);
+
+    query.count({
+      success: function(companyCount) {
+        res.json(companyCount);
+      },
+      error: function(error) {
+        res.json(error);
+      }
+    });
+
+});
+
 
 
 /* GET dashboard page. */
@@ -69,6 +86,8 @@ router.get('/dashboard', function(req, res, next) {
 
 
 });
+
+
 
 // login
 router.post('/login', function(req, res, next) {
