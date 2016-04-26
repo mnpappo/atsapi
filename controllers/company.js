@@ -36,7 +36,7 @@ router.post('/new', function(req, res, next) {
     var company = new Company();
 
     company.set("companyName", params.companyName);
-    company.set("comEmail", params.comEmail);
+    company.addUnique("comEmail", params.comEmail);
     company.set("companyAddress", params.companyAddress);
     company.set("companyPhone", params.companyPhone);
     company.set("parent", params.user);

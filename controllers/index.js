@@ -56,6 +56,7 @@ router.post('/companyCount', function(req, res) {
     var Company = Parse.Object.extend("Company");
     var query = new Parse.Query(Company);
 
+    query.include("parent");
     query.count({
       success: function(companyCount) {
         res.json(companyCount);
