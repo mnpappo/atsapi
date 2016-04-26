@@ -5,12 +5,12 @@ var router = express.Router();
 
 // get companies listing
 router.get('/', function(req, res, next) {
-  
+
   var Company = Parse.Object.extend("Company");
   var query = new Parse.Query(Company);
-  
+
   query.descending("createdAt");
-  
+
   query.first({
     success: function(company) {
       // Successfully retrieved the object.
@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 
 // add new company
 router.get('/new', function(req, res, next) {
-  
+
 });
 
 // add new company
@@ -39,6 +39,7 @@ router.post('/new', function(req, res, next) {
     company.set("comEmail", params.comEmail);
     company.set("companyAddress", params.companyAddress);
     company.set("companyPhone", params.companyPhone);
+    company.set("parent", params.user);
 
     company.save(null, {
         success: function(company){
