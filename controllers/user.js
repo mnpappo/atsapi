@@ -5,14 +5,16 @@ var router = express.Router();
 // get users listing
 router.get('/', function(req, res, next) {
   var params = req.body;
+  console.log(params);
   var query = new Parse.Query(Parse.User);
 
-  query.equalTo("company", params.comObjectId);
+  query.equalTo("comObjectId", params.comObjectId);
   query.descending("createdAt");
 
   query.first({
     success: function(user) {
       // Successfully retrieved the object.
+      console.log(user);
       res.json(user);
     },
     error: function(error) {
@@ -43,7 +45,7 @@ router.post('/new', function(req, res) {
     user.set("email", params.email);
     user.set("password", epassword);
     user.set("userType", params.userType);
-    user.set("comObjectId", params.company);
+    user.set("comObjectId", params.comObjectId);
 
 
     user.signUp(null, {
