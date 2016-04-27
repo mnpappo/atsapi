@@ -71,6 +71,26 @@ router.post('/companyCount', function(req, res) {
 });
 
 
+// company info by userobject
+router.post('/companyByuser', function(req, res) {
+  var Company = Parse.Object.extend("Company");
+  var query = new Parse.Query(Company);
+
+  query.equalTo("parent", params.parent);
+
+  query.first({
+    success: function(company) {
+      // Successfully retrieved the object.
+      res.json(company);
+    },
+    error: function(error) {
+      res.json(error);
+    }
+  });
+
+});
+
+
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
