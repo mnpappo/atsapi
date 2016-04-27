@@ -11,11 +11,11 @@ router.get('/', function(req, res, next) {
   query.equalTo("comObjectId", params.comObjectId);
   query.descending("createdAt");
 
-  query.first({
-    success: function(user) {
+  query.find({
+    success: function(users) {
       // Successfully retrieved the object.
-      console.log(user);
-      res.json(user);
+      console.log(users);
+      res.json(users);
     },
     error: function(error) {
       res.json(error);
