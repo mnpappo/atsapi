@@ -73,6 +73,7 @@ router.post('/companyCount', function(req, res) {
 
 // company info by userobject
 router.post('/companyByuser', function(req, res) {
+  var params = req.body;
   var Company = Parse.Object.extend("Company");
   var query = new Parse.Query(Company);
 
