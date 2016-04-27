@@ -53,10 +53,11 @@ router.post('/', function(req, res) {
 // company count
 router.post('/companyCount', function(req, res) {
     var params = req.body;
+    console.log(params);
     var Company = Parse.Object.extend("Company");
     var query = new Parse.Query(Company);
 
-    query.equalTo("parent", req.parent);
+    query.equalTo("parent", params.parent);
     // query.include("parent");
     query.count({
       success: function(companyCount) {
