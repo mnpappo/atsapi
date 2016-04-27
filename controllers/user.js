@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   var params = req.body;
   var query = new Parse.Query(Parse.User);
 
-  query.equalTo("comObjectId", params.comObjectId);
+  query.equalTo("company", params.comObjectId);
   query.descending("createdAt");
 
   query.first({
