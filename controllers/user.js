@@ -5,9 +5,9 @@ var router = express.Router();
 // get users listing
 router.get('/', function(req, res, next) {
   var query = new Parse.Query(Parse.User);
-  
+
   query.descending("createdAt");
-  
+
   query.first({
     success: function(user) {
       // Successfully retrieved the object.
@@ -24,13 +24,13 @@ router.get('/new', function(req, res) {
   res.render("user/add_user");
 });
 
-// add new user 
+// add new user
 router.post('/new', function(req, res) {
   console.log('got signup req!');
     var params = req.body;
     console.log(params);
     var user = new Parse.User();
-    
+
     var sessionToken = Parse.User.current().getSessionToken();
 
 
@@ -41,7 +41,8 @@ router.post('/new', function(req, res) {
     user.set("email", params.email);
     user.set("password", epassword);
     user.set("userType", params.userType);
-    
+    user.set("comObjectId", params.comObjectId);
+
 
     user.signUp(null, {
         success: function(user){
@@ -60,11 +61,11 @@ router.post('/new', function(req, res) {
 // get a user
 router.get('/:id', function(req, res){
   var object_id = req.params.id;
-  
+
   var query = new Parse.Query(Parse.User);
-  
+
   query.equalTo("objectId", object_id);
-  
+
   query.first({
     success: function(user) {
       // Successfully retrieved the object.
