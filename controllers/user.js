@@ -43,7 +43,7 @@ router.post('/new', function(req, res) {
     user.set("email", params.email);
     user.set("password", epassword);
     user.set("userType", params.userType);
-    user.set("comObjectId", params.comObjectId);
+    user.set("comObjectId", params.company);
 
 
     user.signUp(null, {
