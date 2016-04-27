@@ -37,8 +37,8 @@ router.post('/new', function(req, res) {
     var epassword = crypto.createHash('md5').update(params.password).digest('hex');
 
     user.set("fullName", params.fullName);
-    user.set("username", params.username);
-    user.set("email", params.email);
+    user.addUnique("username", params.username);
+    user.addUnique("email", params.email);
     user.set("password", epassword);
     user.set("userType", params.userType);
     user.set("comObjectId", params.comObjectId);
