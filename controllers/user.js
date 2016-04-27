@@ -4,8 +4,10 @@ var router = express.Router();
 
 // get users listing
 router.get('/', function(req, res, next) {
+  var params = req.body;
   var query = new Parse.Query(Parse.User);
 
+  query.equalTo("comObjectId", params.comObjectId);
   query.descending("createdAt");
 
   query.first({
