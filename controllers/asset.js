@@ -35,7 +35,7 @@ router.post('/new', function(req, res) {
   asset.set("type", params.type);
   asset.set("assigned_to", params.assigned_to);
   asset.set("location", params.location);
-  user.set("comObjectId", params.comObjectId);
+  asset.set("comObjectId", params.comObjectId);
 
 
   asset.save(null, {
