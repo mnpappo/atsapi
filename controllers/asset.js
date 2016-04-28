@@ -31,13 +31,13 @@ router.post('/new', function(req, res) {
   var Asset = Parse.Object.extend("Asset");
   var asset = new Asset();
 
-  asset.set("tag", params.tag);
+  asset.addUnique("tag", params.tag);
   asset.set("type", params.type);
   asset.set("assigned_to", params.assigned_to);
   asset.set("location", params.location);
   user.set("comObjectId", params.comObjectId);
 
-  
+
   asset.save(null, {
     success: function(asset){
       console.log(asset);
