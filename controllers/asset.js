@@ -5,9 +5,9 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var Asset = Parse.Object.extend("Asset");
   var query = new Parse.Query(Asset);
-  
+
   query.descending("createdAt");
-  
+
   query.find({
     success: function(asset) {
       // Successfully retrieved the object.
@@ -35,7 +35,9 @@ router.post('/new', function(req, res) {
   asset.set("type", params.type);
   asset.set("assigned_to", params.assigned_to);
   asset.set("location", params.location);
+  user.set("comObjectId", params.comObjectId);
 
+  
   asset.save(null, {
     success: function(asset){
       console.log(asset);
@@ -53,12 +55,12 @@ router.post('/new', function(req, res) {
 // get a asset
 router.get('/:id', function(req, res){
   var object_id = req.params.id;
-  
+
   var Asset = Parse.Object.extend("Asset");
   var query = new Parse.Query(Asset);
-  
+
   query.equalTo("objectId", object_id);
-  
+
   query.first({
     success: function(asset) {
       // Successfully retrieved the object.
