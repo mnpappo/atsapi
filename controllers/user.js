@@ -6,10 +6,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var params = req.body;
   console.log(params);
+  console.log(params.comObjectId);
   var query = new Parse.Query(Parse.User);
 
   query.equalTo("comObjectId", params.comObjectId);
-  query.descending("createdAt");
 
   query.find({
     success: function(users) {
