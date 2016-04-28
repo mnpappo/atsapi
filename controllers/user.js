@@ -3,14 +3,14 @@ var crypto = require('crypto');
 var router = express.Router();
 
 // get users listing
-router.get('/', function(req, res, next) {
-  var params = req.body.comObjectId;
-  console.log(params);
+router.get('/', function(req, res) {
+  // var params = req.body.comObjectId;
+  // console.log(params);
   var query = new Parse.Query(Parse.User);
 
   // query.equalTo("comObjectId", params.comObjectId);
 
-  query.find({
+  query.first({
     success: function(users) {
       // Successfully retrieved the object.
       console.log(users);
