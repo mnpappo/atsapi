@@ -31,7 +31,7 @@ router.post('/new', function(req, res) {
   var Asset = Parse.Object.extend("Asset");
   var asset = new Asset();
 
-  asset.addUnique("tag", params.tag);
+  asset.set("tag", params.tag);
   asset.set("type", params.type);
   asset.set("assigned_to", params.assigned_to);
   asset.set("location", params.location);
