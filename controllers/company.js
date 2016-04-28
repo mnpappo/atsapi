@@ -39,7 +39,7 @@ router.post('/new', function(req, res, next) {
     company.addUnique("comEmail", params.comEmail);
     company.set("companyAddress", params.companyAddress);
     company.set("companyPhone", params.companyPhone);
-    company.addUnique("parent", params.user);
+    company.set("parent", params.user);
 
     company.save(null, {
         success: function(company){
