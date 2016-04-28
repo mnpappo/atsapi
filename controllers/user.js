@@ -4,11 +4,11 @@ var router = express.Router();
 
 // get users listing
 router.get('/', function(req, res) {
-  // var params = req.body.comObjectId;
-  // console.log(params);
+  var params = req.body;
+  console.log(params);
   var query = new Parse.Query(Parse.User);
 
-  // query.equalTo("comObjectId", params.comObjectId);
+  query.equalTo("comObjectId", params.comObjectId);
 
   query.first({
     success: function(users) {
@@ -21,6 +21,27 @@ router.get('/', function(req, res) {
     }
   });
 });
+
+// get users listing
+router.post('/', function(req, res) {
+  var params = req.body;
+  console.log(params);
+  var query = new Parse.Query(Parse.User);
+
+  query.equalTo("comObjectId", params.comObjectId);
+
+  query.first({
+    success: function(users) {
+      // Successfully retrieved the object.
+      console.log(users);
+      res.json(users);
+    },
+    error: function(error) {
+      res.json(error);
+    }
+  });
+});
+
 
 // new user form
 router.get('/new', function(req, res) {
