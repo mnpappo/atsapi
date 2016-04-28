@@ -4,12 +4,12 @@ var router = express.Router();
 
 // get users listing
 router.get('/', function(req, res, next) {
-  var params = req.body;
-  console.log(params);
-  console.log(params.comObjectId);
+  var comObjectId = req.params.comObjectId;
+  console.log(comObjectId);
+
   var query = new Parse.Query(Parse.User);
 
-  query.equalTo("comObjectId", params.comObjectId);
+  query.equalTo("comObjectId", comObjectId);
 
   query.find({
     success: function(users) {
